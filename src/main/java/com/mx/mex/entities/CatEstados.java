@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Table(name = "CAT_ESTADOS", schema = "SYS_BAHENA")
 public class CatEstados {
 	
+	
 	private Long idEstado;
 	private String nombre;
 	private String abreviatura;

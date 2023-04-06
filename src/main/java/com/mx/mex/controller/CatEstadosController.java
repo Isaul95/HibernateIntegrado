@@ -62,6 +62,7 @@ public class CatEstadosController {
 		
 		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 		return new ResponseEntity <List<CatEstados>> (estados, httpHeaders, HttpStatus.OK);
+		
     } 
 	
 	

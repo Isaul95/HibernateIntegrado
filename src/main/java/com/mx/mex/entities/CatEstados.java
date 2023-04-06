@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CAT_ESTADOS", schema = "CURSOADMIN")
+@Table(name = "CAT_ESTADOS", schema = "SYS_BAHENA")
 public class CatEstados {
 	
 	private Long idEstado;

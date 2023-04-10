@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.mx.mex.entities.CatEstados;
+import com.mx.mex.entities.DatosEmpleados;
 import com.mx.mex.entities.UsuariosAdmin;
 
 
@@ -33,7 +34,7 @@ public class ApplicationContextConfig {
 	    public SessionFactory getSessionFactory(DataSource dataSource) {
 	    	LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	    	sessionBuilder.addProperties(getHibernateProperties());
-	    	sessionBuilder.addAnnotatedClasses(UsuariosAdmin.class, CatEstados.class); // Declarar all clases Entitys para poder hacer las transacciones por Hibernate.
+	    	sessionBuilder.addAnnotatedClasses(UsuariosAdmin.class, CatEstados.class, DatosEmpleados.class); // Declarar all clases Entitys para poder hacer las transacciones por Hibernate.
 	    	return sessionBuilder.buildSessionFactory();
 	    }
 	    
@@ -47,27 +48,5 @@ public class ApplicationContextConfig {
 
 			return transactionManager;
 		}
-	    
-/*	    Este bean se hace uso es importante para poder subir archivos MULPART binarios a DB
-	    @Bean(name = "multipartResolver")
-	    public CommonsMultipartResolver getCommonsMultipartResolver() {
-	    	CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-	    	multipartResolver.setMaxUploadSize(20971520); // 20MB
-	    	multipartResolver.setMaxInMemorySize(1048576);	// 1MB
-	    	return multipartResolver;
-	    }*/
-	    	    
-// --- INICIA ----------------------  ESTOS DOS BEAN FUERON DE EJEMPLO PARA CONSULTA CON HIBERNATE    ------------------------------
-//	    @Autowired
-//	    @Bean(name = "usuarioAdminDao")
-//	    public UsuariosAdminDAO getUsuarioAdminDao(SessionFactory sessionFactory) {
-//	    	return new UsuariosAdminDAOImpl(sessionFactory);
-//	    }
-	    
-	    /*  @Autowired
-	    @Bean(name = "fileUploadDao")
-	    public FileUploadDAO getFileDao(SessionFactory sessionFactory) {
-	    	return new FileUploadDAOImpl(sessionFactory);
-	    }
- --- TERMINA ----------------------  ESTOS DOS BEAN FUERON DE EJEMPLO PARA CONSULTA CON HIBERNATE    ----------------------- */ 
+ 
 }

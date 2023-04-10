@@ -18,7 +18,7 @@ public class DatosEmpleadosDTO {
 	
 	
 	public Long getIdDatosEmpleados() {
-		return idDatosEmpleados;
+		return idDatosEmpleados; 
 	}
 	public Integer getCode() {
 		return code;

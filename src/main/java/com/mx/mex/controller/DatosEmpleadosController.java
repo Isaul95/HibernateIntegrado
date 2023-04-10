@@ -36,7 +36,7 @@ public class DatosEmpleadosController {
 		return new ResponseEntity <String> (respuesta, httpHeaders, HttpStatus.OK);	
     }
 	
-	
+	 
 	
 	//-----------Eliminar Empleado-------------
 		@ResponseBody 

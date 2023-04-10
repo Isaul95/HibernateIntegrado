@@ -31,7 +31,7 @@ implements DatosEmpleadosDAO{
 		return (DatosEmpleados) criteria.uniqueResult();
 	}
 
-	
+	 
 	@Transactional
 	@Override
 	public List<DatosEmpleados> obtenerRegistros() {

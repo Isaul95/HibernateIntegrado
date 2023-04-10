@@ -13,5 +13,5 @@ public interface DatosEmpleadosDAO extends DAO<DatosEmpleados, Long>{
 	List<DatosEmpleados> obtenerRegistros();
 	
 	List<DatosEmpleados> obtenerRegistrosMujeres();
-
+ 
 }

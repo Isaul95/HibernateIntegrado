@@ -29,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	.authorizeRequests()
     .and()
     .formLogin()
-    .loginPage("/Principal/Login").permitAll().defaultSuccessUrl("/Principal/Inicio").failureUrl("/Principal/Login")
+    .loginPage("/Login").permitAll().defaultSuccessUrl("/Inicio").failureUrl("/Login")
     .and()
     .authorizeRequests()
-    .antMatchers("/Principal/Inicio").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')") 
+    .antMatchers("/Inicio").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')") 
     .and()
     .logout()
     .logoutUrl("/logout")
@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		        .usersByUsernameQuery("SELECT USERNAME, PASSWORD, CASE HABILITADO WHEN 'Y' THEN 1 ELSE 2 END AS HABILITADO\r\n"
 		        		+ "		                FROM ACCESO_USUARIOS  WHERE USERNAME=?")
 		        .authoritiesByUsernameQuery("SELECT U.USERNAME, "
-		        		+ "R.PERMISO FROM ACCESO_USUARIOS U, ROLES_USUARIOS R WHERE U.ROLE_USER = R.ID_PERMISO "
+		        		+ "R.PERMISO FROM ACCESO_USUARIOS U, ROL_USUARIO R WHERE U.ROLES_USUARIOS = R.ID_PERMISO "
 		        		+ "AND U.USERNAME=?");        
     }
 	

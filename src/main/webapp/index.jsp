@@ -1,8 +1,19 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
+
 <body>
+ <form action="<c:redirect url="/Login"/>" method= "get" >
+ 
+ </form>
 <h2>Hello World!</h2>
 </body>
+
 </html>
+
+
+
+
 
 <!-- 
 

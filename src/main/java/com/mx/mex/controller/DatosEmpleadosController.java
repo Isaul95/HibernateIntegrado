@@ -24,6 +24,15 @@ public class DatosEmpleadosController {
 	@Autowired
 	private DatosEmpleadosService datosEmpleadosService;
 	
+	@RequestMapping(value = "/Empleados") // Este servicio es para mostrar la pagina
+	public String Redirecciona_vista_empleados() {
+
+		return "vista_Empleados";
+	}
+	
+	
+	
+	//-----Desarrollo de servicios --------
 	//-----------Agregar Empleado-------------
 	@ResponseBody 
 	@RequestMapping(value="/getDatosEmpleados", method = RequestMethod.POST, produces = "application/json") 

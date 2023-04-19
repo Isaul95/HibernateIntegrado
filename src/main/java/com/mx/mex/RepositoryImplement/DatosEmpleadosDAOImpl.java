@@ -26,8 +26,7 @@ implements DatosEmpleadosDAO{
 		
 		final Session session = sessionFactory.getCurrentSession();
 		final Criteria criteria = session.createCriteria(DatosEmpleados.class);
-		criteria.add(Restrictions.eq("rfc", rfc));
-		
+		criteria.add(Restrictions.eq("rfc", rfc));		
 		return (DatosEmpleados) criteria.uniqueResult();
 	}
 

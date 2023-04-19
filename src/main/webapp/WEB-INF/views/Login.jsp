@@ -24,7 +24,7 @@
          
  
           <div class="p-3 mb-2 bg-light text-dark"> <!-- FONDO DEL CONTENEDOR DEL LOGIN -->
-            <form name="form" action="<c:url value='/Principal/Login'/>"
+            <form name="form" action="<c:url value='/Login'/>"
                     method="POST">
             <form class="form-signin">
               <div class="form-label-group">

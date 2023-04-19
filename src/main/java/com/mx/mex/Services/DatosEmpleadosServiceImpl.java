@@ -20,6 +20,27 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 	@Autowired
 	private DatosEmpleadosDAO datosEmpleadosDAO;
 
+	Integer ValidarRfc(String rfc){
+		String validaRfc = null;
+		Integer respuesta = 0;
+		
+		DatosEmpleados dato = datosEmpleadosDAO.buscarDatosRfc(rfc);
+		
+		validaRfc= dato.getRfc();
+		Pattern patN = Pattern.compile("^[A-Z]{4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]$");
+		Matcher matN = patN.matcher(validaRfc);
+		
+		if(matN.find()) {
+			respuesta= 1;
+			System.out.println("El rfc es valido");
+			}else {
+				respuesta=0;
+			}
+		
+		return respuesta;
+		
+	}
+	
 	@SuppressWarnings("unused")
 	@Override
 	public String getDatosEmpleados(DatosEmpleadosDTO rfc) {
@@ -29,14 +50,18 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 			respuesta="El RFC es un dato requerido, favor de insertarlo";
 			
 		}else {
+			
+			Integer valida = ValidarRfc(rfc.getRfc());
+			if(valida == 1) {
+			
 			DatosEmpleados dato = datosEmpleadosDAO.buscarDatosRfc(rfc.getRfc());
-			validaRfc= dato.getRfc();
+			/*validaRfc= dato.getRfc();
 			Pattern patN = Pattern.compile("^[A-Z]{4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]$");
 			
-			Matcher matN = patN.matcher(validaRfc);
+			Matcher matN = patN.matcher(validaRfc);*/
 			
-			if(matN.find()) {
-				System.out.println("El rfc es valido");
+			//if(matN.find()) {
+				//System.out.println("El rfc es valido");
 				if(dato == null) {
 					DatosEmpleados entity = new DatosEmpleados();
 					entity.setIdDatosEmpleados(rfc.getIdDatosEmpleados());
@@ -52,9 +77,12 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 			}else {
 				respuesta="El registro ya existe en la base de datos";
 			}
-		}else {
-			respuesta="El RFC no es valido";
-		}
+		//}else {
+			//respuesta="El RFC no es valido";
+		//}
+			}else {
+				respuesta="El RFC no es valido";
+			}
 		}
 	return respuesta;
 			
@@ -126,8 +154,6 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 	}
 
 	
-
-	
 	@Override
 	public List<DatosEmpleados> consultarEmpleadosHombres() {
 		
@@ -135,13 +161,15 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 		
 		return estados;
 	}
-	 
+	
+	
 	
 	@Override
 	public List<DatosEmpleados> consultarEmpleadosMujeres() {
 		List<DatosEmpleados> estados = datosEmpleadosDAO.obtenerRegistrosMujeres();
 		return estados;
 	}
+	
 
 	@Override
 	public String buscarEmpleado(DatosEmpleadosDTO buscarEmpleado) {
@@ -156,6 +184,4 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 		
 		return respuesta;
 	}
-
-
 }

@@ -184,4 +184,13 @@ public class DatosEmpleadosServiceImpl implements DatosEmpleadosService {
 		
 		return respuesta;
 	}
+	
+	@Override
+	public List<DatosEmpleados> consultaDatosEmpleados() {
+		
+		 List<DatosEmpleados> listDatos = datosEmpleadosDAO.obtenerDatos();
+		 
+		 return listDatos;
+		 
+	}
 }

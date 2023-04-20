@@ -113,6 +113,17 @@ public class DatosEmpleadosController {
 				return new ResponseEntity <String> (respuesta, httpHeaders, HttpStatus.OK);	
 		    }
 			
-			
+			// Consulta todos los registros
+			@ResponseBody 
+			@RequestMapping(value="/consultarDatosEmpleados", method = RequestMethod.GET, produces = "application/json") 
+			ResponseEntity <List<DatosEmpleados>> consultarDatosEmpleados(){
+				final HttpHeaders httpHeaders = new HttpHeaders();
+				
+				List<DatosEmpleados> listaDatos = datosEmpleadosService.consultaDatosEmpleados();
+				
+				httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+				
+				return new ResponseEntity <List<DatosEmpleados>> (listaDatos, httpHeaders, HttpStatus.OK);	
+		    }
 		
 }

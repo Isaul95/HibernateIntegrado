@@ -35,7 +35,8 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	
 //	Mapear = buscar la ubicacion de los recursos 
 //	(css, js, logos imagenes, iconos, jquery, bootstrap)
-	public void addResourcerHandlers(ResourceHandlerRegistry registry) {
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry
 		.addResourceHandler("/resources/**")
 		.addResourceLocations("classpath:/resources/");			

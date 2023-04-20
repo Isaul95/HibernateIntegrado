@@ -57,5 +57,15 @@ implements DatosEmpleadosDAO{
 		return (List<DatosEmpleados>) criteria.list();
 		
 	}
+	
+	@Override
+	@Transactional()
+	public List<DatosEmpleados> obtenerDatos() {
+		
+		final Session session = sessionFactory.getCurrentSession();
+	    final Criteria criteria = session.createCriteria(DatosEmpleados.class);
+	      
+		return (List<DatosEmpleados>) criteria.list();
+	}
 
 }

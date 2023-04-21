@@ -83,28 +83,33 @@ function llenarTablaEmpleados(){
 			},					
 		});
 }
-
 //Al momento de dar click sobre el icono se ejecuta esta funcion para ejecitar la peticion y se elimne el registro.
-
-$(document).on("click","#eliminar_empleado",function(e){
-	e.preventDefault();
+$(document).on("click","#eliminar_empleado",function(event){
+//	    e.preventDefault();
+	event.preventDefault();
+	
 	var idTraidoDesdeElBotonEliminar = $(this).attr("value"); // Asignado el id a la variable -> idTraidoDesdeElBotonEliminar 
+	
 	$.ajax({												 // Todo esto contiene el valor del id desde la tabla -> $(this).attr("value");
 		type: "post",
 		url: "/SistemaWeb/DatosEmpleados/eliminarEmpleados",
 		data: {
-			idDatosEmpleados: idTraidoDesdeElBotonEliminar,  //idDatosEmpleados -> el valor de la izq hace referencia a mi modelo o clase RamoDTO *DEBE ESTAR TAL CUAL
+			idDatosEmpleados : idTraidoDesdeElBotonEliminar,  //idDatosEmpleados -> el atributo que hace referencia a mi clase DTO
+															  // idTraidoDesdeElBotonEliminar -> es el valor que recojemos desde la vista del usuario
 		}, 				    
 		dataType: "json",
 		success: function(respuestadelcontrolador){
-			if (respuestadelcontrolador==1){  // En caso de que si se elimino el registro (CONDICION)
-				alert("El catalogo juzgado fue eliminado"); // Mensaje a mostrar
-				llenarTablaJuzgados();  // Aki se llama la funcion para poder recargar nuevamente los registros nuevos o los que se hayan eliminado
+//			if (respuestadelcontrolador==1){  // En caso de que si se elimino el registro (CONDICION)
+			
+				alert("RESPUESTAS-->", respuestadelcontrolador); // Mensaje a mostrar
 				
-			}
-			else{
-				alert("No se pudo eliminar el registro.!");
-			}
+//				llenarTablaJuzgados();  // Aki se llama la funcion para poder recargar nuevamente los registros nuevos o los que se hayan eliminado
+				
+//			}
+//			else{
+//				alert("No se pudo eliminar el registro.!");
+//			}
+			
 		}
 	});
 
